@@ -1,0 +1,34 @@
+﻿@model Student
+
+<h3>Attendance for @Model.Name</h3>
+
+<a asp-controller="Attendance" asp-action="Add" asp-route-studentId="@Model.Id" class="btn btn-primary mb-3">
+    Add Attendance
+</a>
+
+@if (Model?.Attendances?.Any() == true)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.Attendances)
+            {
+                <tr>
+                    <td>@record.Course.Name</td>
+                    <td>@record.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@(record.IsPresent ? "Present" : "Absent" )</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No attendance records found.</p>
+}

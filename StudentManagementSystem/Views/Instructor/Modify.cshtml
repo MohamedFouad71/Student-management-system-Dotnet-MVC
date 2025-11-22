@@ -1,0 +1,27 @@
+﻿@using StudentManagementSystem.Views.ViewModels
+@model InstructorViewModel
+
+<form asp-action="Modify" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="InstructorName" class="control-label"></label>
+        <input asp-for="InstructorName" class="form-control" />
+        <span asp-validation-for="InstructorName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InstructorHireDate" class="control-label"></label>
+        <input asp-for="InstructorHireDate" class="form-control" />
+        <span asp-validation-for="InstructorHireDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label  class="control-label"></label>
+        <input asp-for="OfficeLocation" class="form-control" />
+        <span asp-validation-for="OfficeLocation" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

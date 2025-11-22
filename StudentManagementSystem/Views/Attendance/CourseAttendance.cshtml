@@ -1,0 +1,30 @@
+﻿@model Course
+
+<h3>Attendance for @Model.Name</h3>
+
+@if (Model.Attendances != null && Model.Attendances.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.Attendances)
+            {
+                <tr>
+                    <td>@record.Student.Name</td>
+                    <td>@record.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@(record.IsPresent ? "Present" : "Absent")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No attendance records found.</p>
+}

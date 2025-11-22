@@ -1,0 +1,25 @@
+﻿@model List<Enrollment>
+
+<link rel="stylesheet" href="~/css/views.css" />
+
+<h2>Student Enrollments</h2>
+<a asp-action="Create" asp-route-studentId="@ViewBag.studentId" class="btn btn-primary" style="margin-bottom: 20px">Add</a>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Course</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var enrollment in Model)
+        {
+            <tr>
+                <td>@enrollment.Course?.Name</td>
+                <td>@(enrollment.Grade.HasValue? enrollment.Grade.ToString() : "Not Graded")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

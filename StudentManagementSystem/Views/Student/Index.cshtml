@@ -1,0 +1,62 @@
+﻿@model List<Student>
+
+<h2 class="text-center my-4">Students</h2>
+
+<link rel="stylesheet" href="~/css/views.css" />
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-controller="Student" asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> New Student
+    </a>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Department</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Modify</th>
+            <th scope="col">Attendence</th>
+            <th scope="col">Enrolled in</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>@student.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                <td>@student.Department?.Name</td>
+                <td>
+                    <form asp-action="StudentDelete" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@student.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this Student?');">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Modify" asp-route-id="@student.Id" class="btn btn-warning btn-sm">Modify</a>
+                </td>
+                <td>
+                    <a asp-controller="Attendance" asp-action="StudentAttendance" asp-route-id="@student.Id" class="btn btn-sm btn-info">
+                        Attendance
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Enrollment" asp-action="Index" asp-route-studentId="@student.Id" class="btn btn-success">Enrollments</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

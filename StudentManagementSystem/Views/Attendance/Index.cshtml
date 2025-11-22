@@ -1,0 +1,30 @@
+﻿@* ########################################################## *@
+@* ################ this is the Attendance index ############ *@
+@* ########################################################## *@
+
+
+@model List<Attendance>
+
+<link rel="stylesheet" href="~/css/views.css" />
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Course Name</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Attendance Date</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Course.Name</td>
+                <td>@item.Student.Name</td>
+                <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                <td>@(item.IsPresent?"Present":"Absent")</td>
+            </tr>
+        }
+    </tbody>
+</table>
