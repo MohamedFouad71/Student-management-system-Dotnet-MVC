@@ -1,49 +1,58 @@
 ﻿@model List<Instructor>
 
-<h2 class="text-center my-4">Instructors</h2>
+<div class="glass-container fade-in-up" style="animation-delay: 0.2s;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Instructors</h2>
+        <a asp-controller="Instructor" asp-action="Create" class="btn-glass">
+            <i class="bi bi-plus-lg me-1"></i> New Instructor
+        </a>
+    </div>
 
-<link rel="stylesheet" href="~/css/views.css" />
-
-<div class="d-flex justify-content-end mb-3">
-    <a asp-controller="Instructor" asp-action="Create" class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> New Instructor
-    </a>
+    <div class="table-responsive">
+        <table class="table glass-table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Hire Date</th>
+                    <th scope="col">Office Location</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var instructor in Model)
+                {
+                    <tr>
+                        <td><span class="text-white-50">#@instructor.Id</span></td>
+                        <td class="font-weight-bold">@instructor.Name</td>
+                        <td>@instructor.HireDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            @if (instructor.OfficeAssignment?.Location != null)
+                            {
+                                <span class="badge bg-secondary bg-opacity-50 text-white">@instructor.OfficeAssignment.Location</span>
+                            }
+                            else
+                            {
+                                <span class="text-white-50 fst-italic">Not Specified</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a asp-action="Modify" asp-route-id="@instructor.Id" class="btn btn-sm btn-outline-warning mx-1" title="Modify">
+                                    <i class="bi bi-pencil-square"></i> Modify
+                                </a>
+                                <form asp-action="InstructorDelete" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@instructor.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this instructor?');">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Hire Date</th>
-            <th scope="col">Office Location</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Modify</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var instructor in Model)
-        {
-            <tr>
-                <td>@instructor.Id</td>
-                <td>@instructor.Name</td>
-                <td>@instructor.HireDate.ToString("yyyy-MM-dd")</td>
-                <td>@(instructor.OfficeAssignment?.Location != null ? instructor.OfficeAssignment?.Location : "Not Specified") </td>
-                <td>
-                    <form asp-action="InstructorDelete" method="post" class="d-inline">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="id" value="@instructor.Id" />
-                        <button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Are you sure you want to delete this instructor?');">
-                            <i class="bi bi-trash"></i> Delete
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <a asp-action="Modify" asp-route-id="@instructor.Id" class="btn btn-warning btn-sm">Modify</a>
-                </td>
-
-            </tr>
-        }
-    </tbody>
-</table>

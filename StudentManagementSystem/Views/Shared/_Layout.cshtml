@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="~/css/Layout.css"/>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
+    <nav class="navbar navbar-expand-lg glass-navbar mb-4 fade-in-up">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">System.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Student" asp-action="Index">Students</a>
                     </li>
@@ -32,13 +35,14 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container fade-in-up" style="animation-delay: 0.1s;">
         @RenderBody()
     </div>
 
-    <footer style="color: white;
-                   text-align: center">
-        <small>&copy; @DateTime.Now.Year - Student Management System</small>
+    <footer class="fade-in-up" style="animation-delay: 0.2s;">
+        <div class="container">
+            <small>&copy; @DateTime.Now.Year - Premium Student Management System</small>
+        </div>
     </footer>
 </body>
 </html>

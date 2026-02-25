@@ -1,30 +1,47 @@
 ﻿@model Course
 
-<h3>Attendance for @Model.Name</h3>
+<div class="glass-container fade-in-up" style="animation-delay: 0.2s;">
+    <div class="mb-4">
+        <h2>Attendance for <span class="text-info">@Model.Name</span></h2>
+    </div>
 
-@if (Model.Attendances != null && Model.Attendances.Any())
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Student Name</th>
-                <th>Date</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var record in Model.Attendances)
-            {
-                <tr>
-                    <td>@record.Student.Name</td>
-                    <td>@record.Date.ToString("yyyy-MM-dd")</td>
-                    <td>@(record.IsPresent ? "Present" : "Absent")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No attendance records found.</p>
-}
+    @if (Model.Attendances != null && Model.Attendances.Any())
+    {
+        <div class="table-responsive">
+            <table class="table glass-table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in Model.Attendances)
+                    {
+                        <tr>
+                            <td>@record.Student.Name</td>
+                            <td>@record.Date.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                @if (record.IsPresent)
+                                {
+                                    <span class="badge bg-success bg-opacity-75 text-white shadow-sm" style="font-weight: 500; padding: 0.5em 0.8em;">Present</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger bg-opacity-75 text-white shadow-sm" style="font-weight: 500; padding: 0.5em 0.8em;">Absent</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert text-center" style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); color: var(--text-secondary);">
+            <p class="mb-0 py-3">No attendance records found for this course.</p>
+        </div>
+    }
+</div>

@@ -1,15 +1,19 @@
 ﻿@model Department
 
-<link rel="stylesheet" href="~/css/views.css" />
+<div class="glass-container fade-in-up" style="animation-delay: 0.2s; max-width: 600px; margin: 0 auto;">
+    <h2 class="text-center mb-4 text-white">Create Department</h2>
 
-<form asp-action="Create" method="post">
+    <form asp-action="Create" method="post">
 
-    <div class="form-group">
-        <label asp-for="Name" class="=control-label"></label>
-        <input asp-for="Name" class="form-control"/>
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Name" class="form-label">Department Name</label>
+            <input asp-for="Name" class="glass-input" placeholder="e.g. Computer Science" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-
-    <button type="submit" class="btn btn-primary mt-3">Add</button>
-</form>
+        <div class="d-flex justify-content-between mt-5">
+            <a asp-action="Index" class="btn-glass-outline">Cancel</a>
+            <button type="submit" class="btn-glass">Create Department</button>
+        </div>
+    </form>
+</div>

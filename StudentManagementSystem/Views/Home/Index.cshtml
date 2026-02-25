@@ -2,8 +2,11 @@
     ViewData["Title"] = "Home";
 }
 
-
-<link rel="stylesheet" href="~/css/views.css" />
-
-<h2 class="home-page">Welcome to the Student Management System</h2>
-<p class="home-page" style="color: white">Use the navigation bar above</p>
+<div class="hero-section fade-in-up" style="animation-delay: 0.3s;">
+    <h1 class="hero-title">Welcome to System.</h1>
+    <p class="hero-subtitle">The next generation of Student Management System designed for modern institutions.</p>
+    <div class="mt-4">
+        <a asp-controller="Student" asp-action="Index" class="btn-glass me-3">Manage Students</a>
+        <a asp-controller="Course" asp-action="Index" class="btn-glass-outline">View Courses</a>
+    </div>
+</div>

@@ -1,30 +1,37 @@
 ﻿@model Course
 
-<form asp-action="Modify" method="post">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="Id" />
+<div class="glass-container fade-in-up" style="animation-delay: 0.2s; max-width: 600px; margin: 0 auto;">
+    <h2 class="text-center mb-4 text-white">Modify Course</h2>
 
-    <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+    <form asp-action="Modify" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
 
-    <div class="form-group">
-        <label asp-for="Credits" class="control-label"></label>
-        <select asp-for="Credits" class="form-control" asp-items="@(new SelectList(ViewBag.Credits))">
-            <option value="">-- Select Credit Hours--</option>
-        </select>
-        <span asp-validation-for="Credits" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Name" class="form-label">Course Name</label>
+            <input asp-for="Name" class="glass-input" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="DepartmentId" class="control-label"></label>
-        <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
-            <option value="">-- Select Department --</option>
-        </select>
-        <span asp-validation-for="DepartmentId" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Credits" class="form-label">Credit Hours</label>
+            <select asp-for="Credits" class="glass-input" asp-items="@(new SelectList(ViewBag.Credits))">
+                <option value="">-- Select Credit Hours--</option>
+            </select>
+            <span asp-validation-for="Credits" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+        <div class="form-group">
+            <label asp-for="DepartmentId" class="form-label">Department</label>
+            <select asp-for="DepartmentId" class="glass-input" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
+                <option value="">-- Select Department --</option>
+            </select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5">
+            <a asp-action="Index" class="btn-glass-outline">Cancel</a>
+            <button type="submit" class="btn-glass">Save Changes</button>
+        </div>
+    </form>
+</div>

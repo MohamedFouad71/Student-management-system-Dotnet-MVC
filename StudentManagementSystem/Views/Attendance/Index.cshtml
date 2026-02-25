@@ -1,30 +1,40 @@
-﻿@* ########################################################## *@
-@* ################ this is the Attendance index ############ *@
-@* ########################################################## *@
+﻿@model List<Attendance>
 
+<div class="glass-container fade-in-up" style="animation-delay: 0.2s;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>System Attendance</h2>
+    </div>
 
-@model List<Attendance>
-
-<link rel="stylesheet" href="~/css/views.css" />
-
-<table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">Course Name</th>
-            <th scope="col">Student Name</th>
-            <th scope="col">Attendance Date</th>
-            <th scope="col">Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Course.Name</td>
-                <td>@item.Student.Name</td>
-                <td>@item.Date.ToString("yyyy-MM-dd")</td>
-                <td>@(item.IsPresent?"Present":"Absent")</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="table-responsive">
+        <table class="table glass-table">
+            <thead>
+                <tr>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Attendance Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Course.Name</td>
+                        <td>@item.Student.Name</td>
+                        <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            @if (item.IsPresent)
+                            {
+                                <span class="badge bg-success bg-opacity-75 text-white shadow-sm" style="font-weight: 500; padding: 0.5em 0.8em;">Present</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger bg-opacity-75 text-white shadow-sm" style="font-weight: 500; padding: 0.5em 0.8em;">Absent</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
