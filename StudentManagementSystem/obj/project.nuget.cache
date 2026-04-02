@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iDIMgJiOGc4=",
+  "dgSpecHash": "+Z7MI5WJs+s=",
   "success": true,
-  "projectFilePath": "E:\\Technical\\Projects\\DotNet-MVC-Students-Management-System\\StudentManagementSystem\\StudentManagementSystem.csproj",
+  "projectFilePath": "E:\\Technical\\Student-management-system-Dotnet-MVC\\StudentManagementSystem\\StudentManagementSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\connect\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\connect\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -139,9 +139,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.Build' 17.8.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3q9-fxm7-j8fq",
-      "projectPath": "E:\\Technical\\Projects\\DotNet-MVC-Students-Management-System\\StudentManagementSystem\\StudentManagementSystem.csproj",
+      "projectPath": "E:\\Technical\\Student-management-system-Dotnet-MVC\\StudentManagementSystem\\StudentManagementSystem.csproj",
       "warningLevel": 1,
-      "filePath": "E:\\Technical\\Projects\\DotNet-MVC-Students-Management-System\\StudentManagementSystem\\StudentManagementSystem.csproj",
+      "filePath": "E:\\Technical\\Student-management-system-Dotnet-MVC\\StudentManagementSystem\\StudentManagementSystem.csproj",
       "libraryId": "Microsoft.Build",
       "targetGraphs": [
         "net10.0"
